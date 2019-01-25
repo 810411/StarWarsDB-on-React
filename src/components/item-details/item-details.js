@@ -59,7 +59,7 @@ export default class ItemDetails extends Component {
       return <span>Select item from a list</span>
     }
 
-    const {id, name, gender, birthYear, eyeColor} = item;
+    const {name} = item;
 
     return this.state.isLoading ? <Spinner/> : (
       <div className="person-details card">
