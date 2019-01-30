@@ -79,3 +79,9 @@
   -webkit-transform: translate(-38px, -38px) scale(0.38) translate(38px, 38px);
   transform: translate(-38px, -38px) scale(0.38) translate(38px, 38px);
 }
+
+.center {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}

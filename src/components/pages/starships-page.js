@@ -1,15 +1,16 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {StarshipList} from '../sw-components';
+import {StarshipDetails, StarshipList} from '../sw-components';
+import Row from "../row";
 
-const StarshipsPage = ({history}) => {
+const StarshipsPage = ({history, match}) => {
+  const {id} = match.params;
 
   return (
-    <StarshipList onItemSelected={itemId => {
-      history.push(itemId)
-    }}/>
-  );
+    <Row
+      left={<StarshipList onItemSelected={id => history.push(id)}/>}
+      right={<StarshipDetails itemId={id}/>}/>
+  )
 };
-
 
 export default withRouter(StarshipsPage)

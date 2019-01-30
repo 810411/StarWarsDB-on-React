@@ -3,12 +3,12 @@ import {Link} from "react-router-dom";
 
 import './header.css';
 
-const Header = ({ onServiceChange }) => {
+const Header = props => {
   return (
     <div className="header d-flex">
       <h3>
         <Link to="/">
-          StarDB
+          StarWarsDB App
         </Link>
       </h3>
       <ul className="d-flex">
@@ -25,11 +25,6 @@ const Header = ({ onServiceChange }) => {
           <Link to="/secret">Secret</Link>
         </li>
       </ul>
-      <button
-          onClick={onServiceChange}
-          className="btn btn-primary btn-sm">
-        Change Service
-      </button>
     </div>
   );
 };

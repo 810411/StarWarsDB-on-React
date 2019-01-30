@@ -10,7 +10,7 @@ import './random-planet.css';
 export default class RandomPlanet extends Component {
 
   static defaultProps = {
-    updateInterval: 30000
+    updateInterval: 20000
   };
 
   static propTypes = {
@@ -79,31 +79,14 @@ export default class RandomPlanet extends Component {
 
 const PlanetView = ({ planet }) => {
 
-  const { id, name, population,
-    rotationPeriod, diameter } = planet;
+  const { id, name } = planet;
 
   return (
     <React.Fragment>
       <img className="planet-image"
            src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
            alt="planet" />
-      <div>
-        <h4>{name}</h4>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <span className="term">Population</span>
-            <span>{population}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Rotation Period</span>
-            <span>{rotationPeriod}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Diameter</span>
-            <span>{diameter}</span>
-          </li>
-        </ul>
-      </div>
+      <h3 className="mt-3">{name}</h3>
     </React.Fragment>
   );
 };

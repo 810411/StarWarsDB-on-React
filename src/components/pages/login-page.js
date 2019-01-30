@@ -9,7 +9,7 @@ const LoginPage = ({isLoggedIn, onLogin}) => {
   }
 
   return (
-    <div className="jimbotron">
+    <div className="jumbotron text-center">
       <p>Login to access secret page</p>
       <button
         className="btn btn-primary"

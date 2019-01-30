@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
-
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/swapi-service';
 import DummySwapiService from '../../services/dummy-swapi-service';
-
 import {
   PeoplePage,
   PlanetsPage,
@@ -17,7 +15,6 @@ import {
 import {SwapiServiceProvider} from '../swapi-service-context';
 
 import './app.css';
-import StarshipDetails from "../sw-components/starship-details";
 
 export default class App extends Component {
 
@@ -50,16 +47,18 @@ export default class App extends Component {
         <SwapiServiceProvider value={this.state.swapiService}>
           <BrowserRouter>
             <div className="stardb-app container">
-              <Header onServiceChange={this.onServiceChange}/>
-              <RandomPlanet/>
-
+              <Header/>
               <Switch>
-
-                <Route path="/" render={() => <h2>Welcome to StarDB</h2>} exact/>
+                <Route path="/"
+                       render={() =>
+                         (<Fragment>
+                           <h2 className="text-center">Welcome to StarWarsDB App</h2>
+                           <RandomPlanet/>
+                         </Fragment>)}
+                       exact/>
                 <Route path="/people/:id?" component={PeoplePage}/>
-                <Route path="/planets" component={PlanetsPage}/>
-                <Route path="/starships" component={StarshipsPage} exact/>
-                <Route path="/starships/:id" render={({match}) => <StarshipDetails itemId={match.params.id}/>}/>
+                <Route path="/planets/:id?" component={PlanetsPage}/>
+                <Route path="/starships/:id?" component={StarshipsPage}/>
                 <Route path="/login"
                        render={() =>
                          <LoginPage
@@ -70,12 +69,10 @@ export default class App extends Component {
                        render={() =>
                          <SecretPage
                            isLoggedIn={isLoggedIn}
+                           onServiceChange={this.onServiceChange}
                          />}/>
-
                 <Route render={() => <h2 className="text-center">404. Page not found</h2>}/>
-
               </Switch>
-
             </div>
           </BrowserRouter>
         </SwapiServiceProvider>
